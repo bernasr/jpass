@@ -28,6 +28,8 @@
  */
 package jpass.util;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
 /**
  * String utility class.
  *
@@ -49,6 +51,7 @@ public final class StringUtils {
      * @param in The String whose non-valid characters we want to remove.
      * @return The in String, stripped of non-valid characters.
      */
+    @SuppressFBWarnings(value = "STYLE", justification = "Java uses UTF-16, this function is compatible with UTF-32")
     public static String stripNonValidXMLCharacters(final String in) {
         if (in == null || in.isEmpty()) {
             return in;

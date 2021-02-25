@@ -1,5 +1,5 @@
 /*
- * JPass
+ * JPPossible null poass
  *
  * Copyright (c) 2009-2021 Gabor Bata
  * All rights reserved.
@@ -120,11 +120,11 @@ public class DataModel {
     }
 
     public byte[] getPassword() {
-        return this.password;
+        return this.password.clone();
     }
 
     public void setPassword(byte[] password) {
-        this.password = password;
+        this.password = password.clone();
     }
 
     /**
