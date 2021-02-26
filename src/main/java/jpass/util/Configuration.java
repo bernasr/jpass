@@ -30,6 +30,7 @@ package jpass.util;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -47,15 +48,23 @@ public final class Configuration {
     private Properties properties = new Properties();
 
     private Configuration() {
+        InputStream is = null;
         try {
             File filePath = new File(getConfigurationFolderPath(), "jpass.properties");
             if (filePath.exists() && filePath.isFile()) {
-                InputStream is = new FileInputStream(filePath);
+                is = new FileInputStream(filePath);
                 properties.load(is);
-                is.close();
             }
         } catch (Exception e) {
             LOG.log(Level.WARNING, "An error occurred during loading configuration.", e);
+        } finally {
+            if (is !=null) {
+                try {
+                    is.close();
+                } catch (IOException e) {
+                    LOG.log(Level.WARNING, "An error occurred on inputstream closing.", e);
+                }
+            }
         }
     }
 

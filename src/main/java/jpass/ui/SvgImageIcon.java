@@ -38,6 +38,7 @@ import com.formdev.flatlaf.util.UIScale;
 import com.kitfox.svg.SVGDiagram;
 import com.kitfox.svg.SVGException;
 import com.kitfox.svg.SVGUniverse;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 /**
  * @author Karl Tauber
@@ -56,6 +57,7 @@ public class SvgImageIcon extends ImageIcon {
         this.name = name;
     }
 
+    @SuppressFBWarnings(value = "CORRECTNESS", justification = "Null Pointer exception is caught in the catch statement")
     private void update() {
         if (dark == isDarkLaf() && diagram != null) {
             return;

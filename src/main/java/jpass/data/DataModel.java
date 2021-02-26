@@ -129,7 +129,9 @@ public class DataModel {
     public void setPassword(byte[] password) {
     	if (password != null) {
     		this.password = password.clone();
-		}
+		} else {
+    	    this.password = null;
+        }
     }
 
     /**
