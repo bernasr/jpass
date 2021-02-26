@@ -120,11 +120,16 @@ public class DataModel {
     }
 
     public byte[] getPassword() {
+    	if (this.password == null) {
+			return null;
+		}
         return this.password.clone();
     }
 
     public void setPassword(byte[] password) {
-        this.password = password.clone();
+    	if (password != null) {
+    		this.password = password.clone();
+		}
     }
 
     /**
