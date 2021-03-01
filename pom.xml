@@ -130,7 +130,7 @@
                 <artifactId>spotbugs-maven-plugin</artifactId>
                 <version>4.2.0</version>
                 <configuration>
-                    <!--excludeFilterFile>spotbugs_filter.xml</excludeFilterFile-->
+                    <excludeFilterFile>jpassExcludeFilter.xml</excludeFilterFile>
                 </configuration>
             </plugin>
         </plugins>
