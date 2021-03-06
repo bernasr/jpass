@@ -36,6 +36,8 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.IconifyAction;
+
 /**
  * System clipboard related utility class.
  *
@@ -79,7 +81,7 @@ public final class ClipboardUtils {
      */
     public static void clearClipboardContent() throws Exception {
         try {
-            Toolkit.getDefaultToolkit().getSystemClipboard().setContents(EMPTY_CONTENT, EMPTY_CONTENT);
+        	Toolkit.getDefaultToolkit().getSystemClipboard().setContents(EMPTY_CONTENT, EMPTY_CONTENT);
         } catch (Throwable throwable) {
             throw new Exception("Cannot set clipboard content.");
         }
@@ -132,4 +134,5 @@ public final class ClipboardUtils {
             // do nothing
         }
     }
+    
 }
