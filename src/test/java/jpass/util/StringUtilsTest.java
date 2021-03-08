@@ -1,3 +1,5 @@
+package jpass.util;
+
 import java.awt.Toolkit;
 import java.awt.datatransfer.DataFlavor;
 
@@ -41,7 +43,7 @@ public class StringUtilsTest {
 	
 	@Test
 	public void shouldHandleInvalidCharacters() {
-		String testString = "test string\0xD8FF";
+		String testString = "test string\u0019";
 		String expected = "test string?";
 		String result = StringUtils.stripNonValidXMLCharacters(testString);
 		Assert.assertEquals(expected, result);
