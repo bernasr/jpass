@@ -107,7 +107,7 @@ public class ClipboardUtilsTest {
 	/**
 	 * getClipboardContent
 	 * 
-	 * clipboard vazia = clipboard n string | clipboard com string
+	 * clipboard vazia = clipboard n string | clipboard com string vazia | clipboard com string
 	 *
 	 */
 	
@@ -119,6 +119,16 @@ public class ClipboardUtilsTest {
 
 	}
 	
+	@Test
+	public void shouldHandleSEmptytringInClipboard() {
+		StringSelection selection = new StringSelection("");
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection, selection);
+        String conteudo = ClipboardUtils.getClipboardContent();
+		Assert.assertEquals(conteudo, null);
+
+	}
+	
+	@Test
 	public void shouldHandleStringInClipboard() {
 		StringSelection selection = new StringSelection("test string");
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection, selection);
@@ -126,5 +136,7 @@ public class ClipboardUtilsTest {
 		Assert.assertEquals(conteudo, "test string");
 
 	}
+	
+	
 	
 }
