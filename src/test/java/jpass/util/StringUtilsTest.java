@@ -1,13 +1,7 @@
 package jpass.util;
 
-import java.awt.Toolkit;
-import java.awt.datatransfer.DataFlavor;
-
 import org.junit.Assert;
 import org.junit.Test;
-
-import jpass.util.ClipboardUtils;
-import jpass.util.StringUtils;
 
 public class StringUtilsTest {
 	
