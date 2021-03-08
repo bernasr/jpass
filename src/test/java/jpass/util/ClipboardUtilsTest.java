@@ -54,7 +54,7 @@ public class ClipboardUtilsTest {
 	
 	@Test
 	public void shouldHandleNonEmpty() {
-		String testString = "esta string devia funcionar";
+		String testString = "test string";
 		Toolkit.getDefaultToolkit();
 		try {
 			ClipboardUtils.setClipboardContent(testString);
@@ -93,7 +93,7 @@ public class ClipboardUtilsTest {
 	@Test
 	public void shouldHandleNonEmptyClipboard() {
 		try {
-			StringSelection selection = new StringSelection("string de teste");
+			StringSelection selection = new StringSelection("test string");
             Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection, selection);
 			ClipboardUtils.clearClipboardContent();
 		} catch (Exception e) {
@@ -120,10 +120,10 @@ public class ClipboardUtilsTest {
 	}
 	
 	public void shouldHandleStringInClipboard() {
-		StringSelection selection = new StringSelection("string de teste");
+		StringSelection selection = new StringSelection("test string");
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection, selection);
         String conteudo = ClipboardUtils.getClipboardContent();
-		Assert.assertEquals(conteudo, "string de teste");
+		Assert.assertEquals(conteudo, "test string");
 
 	}
 	
