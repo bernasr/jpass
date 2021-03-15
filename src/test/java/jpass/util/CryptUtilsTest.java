@@ -25,9 +25,9 @@ public class CryptUtilsTest {
 
 
 	@Test
-	public void shouldHandleZeroIteration() {
+	public void shouldHandleOneIteration() {
 		char[] text = {'t', 'e', 's', 't'};
-		int iterations = 0;
+		int iterations = 1;
 		byte[] result = null;
 		byte[] expected = null; 
 		try {
@@ -57,9 +57,9 @@ public class CryptUtilsTest {
 	}
 
 	@Test
-	public void shouldNotHandleNegativeIteration() throws Exception {
+	public void shouldNotHandleZeroIteration() throws Exception {
 		char[] text = {'t', 'e', 's', 't'};
-		int iterations = -1;
+		int iterations = 0;
 		byte[] result = null;
 		byte[] expected = null;
 		result = copy_of_function(text, iterations);
