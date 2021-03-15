@@ -42,5 +42,27 @@ public class StringUtilsTest {
 		String result = StringUtils.stripNonValidXMLCharacters(testString);
 		Assert.assertEquals(expected, result);
 	}
+	
+	@Test
+	public void shouldHandleZeroLenght() {
+		String testString = "test string";
+		int len = 0;
+		String result = StringUtils.stripString(testString, len);
+		Assert.assertEquals("...", result);
+	}
+	
+	@Test
+	public void shouldHandleNegLenght() {
+		String testString = "test string";
+		int len = -1;
+		try {
+			String result = StringUtils.stripString(testString, len);
+			Assert.assertTrue(false);
+		} catch (Exception e) {
+			Assert.assertTrue(true);
+		}
+		
+		
+	}
 }
 
