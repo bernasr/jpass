@@ -59,6 +59,7 @@ public class StringUtilsTest {
 			String result = StringUtils.stripString(testString, len);
 			Assert.assertTrue(false);
 		} catch (Exception e) {
+			System.out.println(e);
 			Assert.assertTrue(true);
 		}
 		
