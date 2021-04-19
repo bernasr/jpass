@@ -33,7 +33,7 @@ public class CryptUtilsTest {
 		try {
 			result = copy_of_function(text, iterations);
 		} catch (Exception e) {
-			Assert.assertTrue(false);
+			Assert.fail();
 		}
 		MessageDigest md;
 		try {
@@ -48,7 +48,7 @@ public class CryptUtilsTest {
 			}
 			expected = digest;
 		} catch (NoSuchAlgorithmException e) {
-			Assert.assertTrue(false);
+			Assert.fail();
 		}
 		Assert.assertArrayEquals(expected, result);
 
@@ -56,7 +56,40 @@ public class CryptUtilsTest {
 
 	}
 
-//	@Test
+	@Test
+	public void shouldHandleMoreIteration() {
+		char[] text = {'t', 'e', 's', 't'};
+		int iterations = 5;
+		byte[] result = null;
+		byte[] expected = null;
+		try {
+			result = copy_of_function(text, iterations);
+		} catch (Exception e) {
+			Assert.fail();
+		}
+		MessageDigest md;
+		try {
+			md = MessageDigest.getInstance("SHA-256");
+			md.reset();
+			// md.update(salt);
+			byte[] bytes = new String(text).getBytes(StandardCharsets.UTF_8);
+			byte[] digest = md.digest(bytes);
+			for (int i = 0; i < iterations; i++) {
+				md.reset();
+				digest = md.digest(digest);
+			}
+			expected = digest;
+		} catch (NoSuchAlgorithmException e) {
+			Assert.fail();
+		}
+		Assert.assertArrayEquals(expected, result);
+
+
+
+	}
+
+
+	//	@Test
 	public void shouldNotHandleZeroIteration() throws Exception {
 		char[] text = {'t', 'e', 's', 't'};
 		int iterations = 0;

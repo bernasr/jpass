@@ -50,20 +50,35 @@ public class StringUtilsTest {
 		String result = StringUtils.stripString(testString, len);
 		Assert.assertEquals("...", result);
 	}
-	
+
 	@Test
 	public void shouldHandleNegLenght() {
 		String testString = "test string";
 		int len = -1;
 		try {
 			String result = StringUtils.stripString(testString, len);
-			Assert.assertTrue(false);
+			Assert.fail();
 		} catch (Exception e) {
 			System.out.println(e);
 			Assert.assertTrue(true);
 		}
-		
-		
 	}
+
+	@Test
+	public void shouldStripLenght() {
+		String testString = "test string";
+		int len = 5;
+		String result = StringUtils.stripString(testString, len);
+		Assert.assertEquals("test ...", result);
+	}
+
+	@Test
+	public void shoulNotStripLenght() {
+		String testString = "test string";
+		int len = 20;
+		String result = StringUtils.stripString(testString, len);
+		Assert.assertEquals("test string", result);
+	}
+
 }
 
